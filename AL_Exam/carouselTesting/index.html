@@ -10,14 +10,20 @@
 				// console.log(i);
 				var j = counter%(ls.length - 1);
 				var data = JSON.parse(ls.getItem(ls.key(j)));
-				document.getElementById("image-container").innerHTML = "<img src='" + data["pphoto"] + "'>";
+				document.getElementById("image-container").innerHTML = "<img id='photo' src='" + data["pphoto"] + "'>";
 				counter++;
 			}
 			function displayImage() {
 				setInterval(loopingImages, 2000);
 			}
+			
 			window.onload = () => {
-				displayImage()
+				// var event = new EventTarget();
+				// event.addEventListener(document.getElementById("image-container"));
+				// displayImage()
+				var range = document.getElementById("image-container");
+				range.addEventListener("mouseout", displayImage,false);
+				range.addEventListener("mouseover", loopingImages ,false);
 			}
 		</script>
 	</head>
