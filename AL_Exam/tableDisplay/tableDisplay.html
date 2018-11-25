@@ -5,21 +5,25 @@
 		<meta charset="utf-8"/>
         <script>
 		var ls = window.localStorage;
-		var txt = "<table>"
+		var txt = "<table>";
+		var date = new Date();
+		var time = date.getTime();
 		window.onload = () => {
-			for(i = 0; i < ls.length; i++) {
+			updateTable();
+		}
+
+		function updateTable() {
+			for(i = ls.length - 1; i >= 0; i--) {
 				txt += "<tr>";
 				var data = JSON.parse(ls.getItem(ls.key(i)));
-				var prod = "";
 				for(var x in data) {
 					txt += "<td>" + data[x] + "</td>";
-					prod += data[x] + " ";
 				}
-				txt += "</tr>"
-				console.log(prod);
+				txt += "<td><button onclick='updateProduct(this.id)' id='e&" + data['ptime'] + "'>Edit</button></td>";
+				txt += "<td><button onclick='deleteProduct(this.id)' id='d&" + data['ptime'] + "'>Delete</button></td>";
+				txt += "</tr>";
 			}
 			txt += "</table>";
-			console.log(txt);
 			document.getElementById("table").innerHTML = txt;
 		}
 		//this function saves a certain product in local storage
@@ -28,8 +32,7 @@
 			var description = document.getElementById("description").value;
 			var photo = document.getElementById("photo").value;
 			var featured = document.getElementById("featured").value;
-			var date = new Date();
-			var time = date.getTime();
+			time = keyChecker(time);
 			var product = {
 				ptime : time,
 				pname : name,
@@ -39,7 +42,40 @@
 			};
 			var productInfo = JSON.stringify(product);
 			ls.setItem(time, productInfo);
-			loadAllProducts();
+			// loadAllProducts();
+		}
+
+		function updateProduct(id) {
+			var prod = JSON.parse(ls.getItem(id.split("&")[1]));
+			console.log(prod);
+			var otime = id.split("&")[1];
+			time = parseInt(otime);
+			// if(id.split("&")[0] == 'd') {
+			// 	ls.removeItem(time);
+			// }
+			document.getElementById("name").value = prod["pname"];
+			document.getElementById("description").value = prod["pdescription"];
+			document.getElementById("photo").value = prod["pphoto"];
+			document.getElementById("featured").value = prod["pfeatured"];
+		}
+
+		function deleteProduct(id) {
+			var otime = id.split("&")[1];
+			time = parseInt(otime);
+			ls.removeItem(time);
+		}
+
+		function keyChecker(ptime) {
+			for(i = ls.length - 1; i > 0; i--) {
+				if(ptime == ls.key(i)) {
+					ptime = ls.key(i);
+					return ptime;
+				}
+				else {
+					ptime = date.getTime();
+				}
+			}
+			return ptime;
 		}
         </script>
     </head>
@@ -53,20 +89,6 @@
                 <div><input id="save" type="submit" value="Save/Update" onclick="addProduct();"/></div>
             </form>
         </div>
-        <!-- <div>PRODUCTS DISPLAY</div> -->
-		<!-- <div>
-			<table id="productsTable">
-				<tr>
-					<td>Time1</td>
-                    <td>Name1</td>
-                    <td>Description1</td>
-                    <td>Photo1</td>
-                    <td>Feature1</td>
-                </tr>
-			</table>
-		</div> -->
 		<div id="table"></div>
-		<!-- <div onload="loadAllProducts()">
-        </div> -->
     </body>
 </html>
