@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+		<title>Form</title>
+		<meta charset="utf-8"/>
+        <script>
+		var ls = window.localStorage;
+		var txt = "<table>"
+		window.onload = () => {
+			for(i = 0; i < ls.length; i++) {
+				txt += "<tr>";
+				var data = JSON.parse(ls.getItem(ls.key(i)));
+				var prod = "";
+				for(var x in data) {
+					txt += "<td>" + data[x] + "</td>";
+					prod += data[x] + " ";
+				}
+				txt += "</tr>"
+				console.log(prod);
+			}
+			txt += "</table>";
+			console.log(txt);
+			document.getElementById("table").innerHTML = txt;
+		}
+		//this function saves a certain product in local storage
+		function addProduct() {
+			var name = document.getElementById("name").value;
+			var description = document.getElementById("description").value;
+			var photo = document.getElementById("photo").value;
+			var featured = document.getElementById("featured").value;
+			var date = new Date();
+			var time = date.getTime();
+			var product = {
+				ptime : time,
+				pname : name,
+				pdescription : description,
+				pphoto : photo,
+				pfeatured : featured
+			};
+			var productInfo = JSON.stringify(product);
+			ls.setItem(time, productInfo);
+			loadAllProducts();
+		}
+        </script>
+    </head>
+    <body>
+        <div>
+            <form id="form-container">
+                <div><label>Name</label><input id="name" type="text"/></div>
+                <div><label>Decription</label><input id="description" type="text"/></div>
+                <div><label>Photo</label><input id="photo" type="text"/></div>
+                <div><input id="featured" type="checkbox"/>Featured</div>
+                <div><input id="save" type="submit" value="Save/Update" onclick="addProduct();"/></div>
+            </form>
+        </div>
+        <!-- <div>PRODUCTS DISPLAY</div> -->
+		<!-- <div>
+			<table id="productsTable">
+				<tr>
+					<td>Time1</td>
+                    <td>Name1</td>
+                    <td>Description1</td>
+                    <td>Photo1</td>
+                    <td>Feature1</td>
+                </tr>
+			</table>
+		</div> -->
+		<div id="table"></div>
+		<!-- <div onload="loadAllProducts()">
+        </div> -->
+    </body>
+</html>
