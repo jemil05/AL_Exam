@@ -17,10 +17,31 @@
     font: bold 64px arial;
 }
 
-#products {
+#container, #products {
     margin: 10% 10% 0 10%;
     width: 80%;
     overflow: auto;
+    /* top: 0; */
+    /* bottom: 0; */
+    /* border: 5px #000; */
+}
+
+#form-container {
+    /* height: 10%; */
+    border: 1px solid black;
+    align-self: auto;
+    align-items: auto;
+    margin: 10% 10% 0 10%;
+    width: 40%;
+    overflow: auto;
+    /* top: 0; */
+    /* bottom: 0; */
+    /* border: 5px #000; */
+}
+
+#new-product {
+    width: 100%;
+    height: 64px;
     top: 0;
     bottom: 0;
 }
