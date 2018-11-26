@@ -26,7 +26,7 @@
 				// txt += "<td class='ctime'>" + data["ptime"] + "</td>";
 				txt += "<td class='cname'>" + data["pname"] + "</td>";
 				txt += "<td class='cdescription'>" + data["pdescription"] + "</td>";
-				txt += "<td class='cphoto'><img src='" + data["pphoto"] + "' style='height:72px'></td>";
+				txt += "<td class='cphoto'><img src='" + data["pphoto"] + "' style='height:200px'></td>";
 				txt += "<td class='cfeatured'>" + data["pfeatured"] + "</td>";
 				txt += "<td class='cedit'><button onclick='updateProduct(this.id)' id='e&" + data['ptime'] + "'>Edit</button></td>";
 				txt += "<td class='cdelete'><button onclick='deleteProduct(this.id)' id='d&" + data['ptime'] + "'>Delete</button></td>";
@@ -40,7 +40,7 @@
 			var name = document.getElementById("name").value;
 			var description = document.getElementById("description").value;
 			var photo = document.getElementById("photo").value;
-			var featured = document.getElementById("featured").value;
+			var featured = document.getElementById("featured").checked;
 			time = keyChecker(time);
 			var product = {
 				ptime : time,

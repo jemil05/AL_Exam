@@ -12,7 +12,14 @@
 				var pl = SortProductKeys();
 				var j = counter%(pl.length - 1);
 				var data = JSON.parse(ls.getItem(pl[j]));
-				document.getElementById("image-container").innerHTML = "<img onmouseenter='freeze()' onmouseout='continuous()' id='photo' src='" + data["pphoto"] + "'>";
+				if(data["pfeatured"]) {
+					document.getElementById("image-container").innerHTML = "<img onmouseenter='freeze()' onmouseout='continuous()' id='photo' src='" + data["pphoto"] + "'>";
+				}
+				else {
+					data = JSON.parse(ls.getItem(pl[j++]));
+					document.getElementById("image-container").innerHTML = "<img onmouseenter='freeze()' onmouseout='continuous()' id='photo' src='" + data["pphoto"] + "'>";
+					counter++;
+				}
 				counter++;
 			}
 			
