@@ -1,0 +1,57 @@
+body {
+    font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
+#header {
+    margin: auto;
+    width: 100%;
+    height: 10%;
+    position: fixed;
+    /* text-align: center; */
+    top: 0%;
+    background: rgba(50, 200, 50, 1);
+}
+
+#header > h3 {
+    margin-left: 1%;
+    margin-top: 1%;
+    color: white;
+    font-style: bold;
+    font-size: 24px;
+    text-align: left;
+}
+
+#header > a {
+    text-align: left;
+    margin-right: 1%;
+    color: blue;
+    font-style: bold;
+}
+
+#pic {
+    display: table;
+    width: 100%;
+    height: 100vh;
+    margin: 0 auto;
+}
+
+#image-container {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+
+#photo {
+    border: 5px slategrey  solid;
+}
+
+#footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 10%;
+    background-color: rgba(50, 200, 50, 1);;
+    color: white;
+    text-align: center;
+}
