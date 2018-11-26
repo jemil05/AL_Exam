@@ -4,72 +4,20 @@
 		<title>Carousel</title>
 		<meta charset="utf-8"/>
 		<link rel="stylesheet" type="text/css" href="homepage.css" />
-		<script>
-			var ls = window.localStorage;
-			var counter = 0;
-			var t = 5000;
-			function loopingImages() {
-				var pl = SortProductKeys();
-				var j = counter%(pl.length - 1);
-				var data = JSON.parse(ls.getItem(pl[j]));
-				if(data["pfeatured"]) {
-					document.getElementById("image-container").innerHTML = "<img onmouseenter='freeze()' onmouseout='continuous()' id='photo' src='" + data["pphoto"] + "'>";
-				}
-				else {
-					data = JSON.parse(ls.getItem(pl[j++]));
-					document.getElementById("image-container").innerHTML = "<img onmouseenter='freeze()' onmouseout='continuous()' id='photo' src='" + data["pphoto"] + "'>";
-					counter++;
-				}
-				counter++;
-			}
-			
-			// function displayImage() {
-			// 	var time = t;
-			// 	setInterval(loopingImages, time);
-			// }
-
-			window.onload = () => {
-				loopingImages();
-				// var event = new EventTarget();
-				// event.addEventListener(document.getElementById("image-container"));
-				// displayImage();
-				// var range = document.getElementById("image-container");
-				// document.getElementById("image-container").addEventListener("mouseout", continuous);
-				// document.getElementById("image-container").addEventListener("mouseover", freeze);
-			}
-			
-			function freeze() {
-				// t = 99999999;
-				setInterval(loopingImages, 5000);
-				// alert("mouse over");
-			}
-			
-			function continuous() {
-				// t = 5000;
-				setInterval(loopingImages, 5000);
-				// alert("mouse out");
-			}
-
-			function SortProductKeys(){
-				if(ls.length > 0){
-					var productArray = new Array();
-					for (k=0; k<ls.length; k++){
-						productArray[k] = localStorage.key(k);
-					}
-				}
-				var sortedProducts = productArray.sort();
-				return sortedProducts;
-			}
-			</script>
+		<script src="homepage.js"></script>
 	</head>
 	<body>
-		<div id="header">
-			<h3>Product Display</h3>
-			<a href="../carouselTesting/tableDisplay.html">>>Product Manager</a>
+		<div>
+			<div id="header">
+				<h2>Product Display</h2>
+			</div>
+			<div id="link">
+				<a href="../carouselTesting/tableDisplay.html">>>Product Manager</a>
+			</div>
+			<div id="pic">
+				<div id="image-container"></div>
+			</div>
+			<div id= "footer">Contacts ...</div>
 		</div>
-		<div id="pic">
-			<div id="image-container"></div>
-		</div>
-		<div id= "footer">Contacts ...</div>
 	</body>
 </html>

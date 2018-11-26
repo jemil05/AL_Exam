@@ -4,108 +4,15 @@
 		<title>Form</title>
 		<meta charset="utf-8"/>
 		<link rel="stylesheet" type="text/css" href="management.css" />
-        <script>
-		var ls = window.localStorage;
-		var txt = "<table id='products'><tr id='table-title'><th>Name</th><th>Description</th><th>Photo</th><th>Featured(Yes/No)</th><th>Edit</th><th>Delete</th></tr>";
-		// var txt = "<table id='products'><tr id='table-title'><th>Time</th><th>Name</th><th>Description</th><th>Photo</th><th>Featured(Yes/No)</th><th>Edit</th><th>Delete</th></tr>";
-		var date = new Date();
-		var time = date.getTime();
-		window.onload = () => {
-			updateTable();
-		}
+        <script src="management.js"></script>
 
-		function updateTable() {
-			var pl = SortProductKeys();
-			for(i = pl.length - 1; i >= 0; i--) {
-				txt += "<tr>";
-				var data = JSON.parse(ls.getItem(pl[i]));
-				// for(var x in data) {
-				// 	console.log(x);
-				// 	txt += "<td>" + data[x] + "</td>";
-				// }
-				// txt += "<td class='ctime'>" + data["ptime"] + "</td>";
-				txt += "<td class='cname'>" + data["pname"] + "</td>";
-				txt += "<td class='cdescription'>" + data["pdescription"] + "</td>";
-				txt += "<td class='cphoto'><img src='" + data["pphoto"] + "' style='height:200px'></td>";
-				txt += "<td class='cfeatured'>" + data["pfeatured"] + "</td>";
-				txt += "<td class='cedit'><button onclick='updateProduct(this.id)' id='e&" + data['ptime'] + "'>Edit</button></td>";
-				txt += "<td class='cdelete'><button onclick='deleteProduct(this.id)' id='d&" + data['ptime'] + "'>Delete</button></td>";
-				txt += "</tr>";
-			}
-			txt += "</table>";
-			document.getElementById("table").innerHTML = txt;
-		}
-		//this function saves a certain product in local storage
-		function addProduct() {
-			var name = document.getElementById("name").value;
-			var description = document.getElementById("description").value;
-			var photo = document.getElementById("photo").value;
-			var featured = document.getElementById("featured").checked;
-			time = keyChecker(time);
-			var product = {
-				ptime : time,
-				pname : name,
-				pdescription : description,
-				pphoto : photo,
-				pfeatured : featured
-			};
-			var productInfo = JSON.stringify(product);
-			ls.setItem(time, productInfo);
-			// loadAllProducts();
-		}
-
-		function updateProduct(id) {
-			var prod = JSON.parse(ls.getItem(id.split("&")[1]));
-			console.log(prod);
-			var otime = id.split("&")[1];
-			time = parseInt(otime);
-			// if(id.split("&")[0] == 'd') {
-			// 	ls.removeItem(time);
-			// }
-			document.getElementById("name").value = prod["pname"];
-			document.getElementById("description").value = prod["pdescription"];
-			document.getElementById("photo").value = prod["pphoto"];
-			document.getElementById("featured").value = prod["pfeatured"];
-			window.scrollTo({
-				top: 0,
-				behavior: 'smooth'
-			});
-		}
-
-		function deleteProduct(id) {
-			var otime = id.split("&")[1];
-			time = parseInt(otime);
-			ls.removeItem(time);
-		}
-
-		function keyChecker(ptime) {
-			for(i = ls.length - 1; i > 0; i--) {
-				if(ptime == ls.key(i)) {
-					ptime = ls.key(i);
-					return ptime;
-				}
-				else {
-					ptime = date.getTime();
-				}
-			}
-			return ptime;
-		}
-		function SortProductKeys(){
-			if(ls.length > 0){
-				var productArray = new Array();
-				for (k=0; k<ls.length; k++){
-					productArray[k] = localStorage.key(k);
-				}
-			}
-			var sortedProducts = productArray.sort();
-			return sortedProducts;
-		}
         </script>
     </head>
     <body>
 		<div id="header">
-			<h3>Product Manager</h3>
+			<h2>Product Manager</h2>
 		</div>
+		<div id="total"></div>
         <div id="form-container">
 			<div id="form">
 				<h3>Update Products</h3>
