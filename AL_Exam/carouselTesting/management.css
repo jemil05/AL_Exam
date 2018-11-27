@@ -53,20 +53,19 @@ body {
     vertical-align: middle;
     text-align: center;
     height: 50%;
-    
 }
 
-#form > h3 {
-    height: 32px;
+#form > h2 {
+    height: auto;
     background-color: rgba(10, 255, 10, 0.5);
     align-self: auto;
-    margin: 0 0 0 0;
+    margin: 0 0 8px 0;
 }
 
 #form > div {
     /* background-color: rgba(10, 255, 10, 0.5); */
     /* align-self: auto; */
-    size: 64px;
+    size: auto;
 }
 
 #name, #photo {
@@ -105,8 +104,8 @@ body {
     /* margin: 10% 10% 0 10%; */
     /* margin: 0 0 0 0; */
     margin-top: -5%;
-    margin-left: 10%;
-    margin-right: 10%;
+    margin-left: 5%;
+    margin-right: 5%;
     width: 90%;
     height: 30%;
     overflow: auto;

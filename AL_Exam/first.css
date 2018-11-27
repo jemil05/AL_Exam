@@ -1,0 +1,76 @@
+body {
+	overflow: scroll;
+	font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
+#header {
+	margin: auto;
+	width: 100%;
+	height: auto;
+	position: fixed;
+	top: 0%;
+	background: rgba(50, 200, 50, 1);
+}
+
+#header > h2 {
+	margin-left: 1%;
+	margin-top: 1%;
+	color: white;
+	font-style: bold;
+	font-size: 24px;
+	text-align: left;
+}
+
+#link {
+	margin-top: 6%;
+	text-align: left;
+	color: blue;
+	font-style: bold;
+}
+
+#pic {
+	display: table;
+	width: 100%;
+	height: auto;
+	margin: 0 auto;
+}
+
+#image-container {
+	height: auto     ;  
+	display: table-cell;
+	vertical-align: text-top;
+	text-align: center;
+	margin-top: 0;
+}
+
+#photo {
+	border: 5px slategrey  solid;
+}
+
+#product-name {
+	text-align: center;
+	margin-left: 10%;
+	margin-right: 10%;
+	height: 24px;
+	font-style: bold;
+}
+
+#product-description {
+	text-align: justify;
+	font-size: 12px;
+	margin-left: 10%;
+	margin-right: 10%;
+	text-align: center;
+	height: 10px;
+}
+
+#footer {
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	height: 10%;
+	background-color: rgba(50, 200, 50, 1);;
+	color: white;
+	text-align: center;
+}

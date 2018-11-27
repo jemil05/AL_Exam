@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
-    <head>
+	<head>
 		<title>Form</title>
 		<meta charset="utf-8"/>
-        <script>
+		<script>
 		var ls = window.localStorage;
 		function loadAllProducts() {
 			for(i = 0; i < ls.length; i++) {
@@ -15,7 +15,7 @@
 				console.log(prod);
 			}
 		}
-		//this function saves a certain product in local storage
+
 		function addProduct() {
 			var name = document.getElementById("name").value;
 			var description = document.getElementById("description").value;
@@ -34,9 +34,9 @@
 			ls.setItem(time, productInfo);
 			loadAllProducts();
 		}
-        </script>
-    </head>
-    <body onload="loadAllProducts()">
+		</script>
+	</head>
+	<body onload="loadAllProducts()">
 		<form id="form-container">
 			<div><label>Name</label><input id="name" type="text"/></div>
 			<div><label>Decription</label><input id="description" type="text"/></div>
@@ -44,6 +44,5 @@
 			<div><input id="featured" type="checkbox"/>Featured</div>
 			<div><input id="save" type="submit" value="Save/Update" onclick="addProduct();"/></div>
 		</form>
-		<!-- <div>PRODUCTS DISPLAY</div> -->
-    </body>
+	</body>
 </html>

@@ -22,9 +22,10 @@ body {
     text-align: left;
 }
 
-#link > a {
+#link {
     /* position: relative; */
-    margin: 0 auto;
+    /* margin: 0 auto; */
+    margin-top: 6%;
     text-align: left;
     /* margin-left: 1%; */
     color: blue;
@@ -34,18 +35,38 @@ body {
 #pic {
     display: table;
     width: 100%;
-    height: 100vh;
+    height: auto;
     margin: 0 auto;
 }
 
 #image-container {
+    /* height: 30%; */
+    height: auto     ;  
     display: table-cell;
-    vertical-align: middle;
+    vertical-align: text-top;
     text-align: center;
+    margin-top: 0;
 }
 
 #photo {
     border: 5px slategrey  solid;
+}
+
+#product-name {
+    text-align: center;
+    margin-left: 10%;
+    margin-right: 10%;
+    height: 24px;
+    font-style: bold;
+}
+
+#product-description {
+    text-align: justify;
+    font-size: 12px;
+    margin-left: 10%;
+    margin-right: 10%;
+    text-align: center;
+    height: 10px;
 }
 
 #footer {
